@@ -1,3 +1,7 @@
+# Task
+## Task.Run(() => func())
+It wraps around a call to make it syncronous if it is not syncronous.
+
 # Async and await
 
 [source](https://www.youtube.com/watch?v=2moh18sh5p4&t=46s&ab_channel=IAmTimCorey)
@@ -19,4 +23,3 @@
 1. Until the `await` completes it suspends the function it is called in
 2. When the current function is suspended,the control is returned to the called function
 3. For e.g. the click event returns the control to the UI so that UI can continue its work
-4. 
