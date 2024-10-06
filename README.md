@@ -53,3 +53,18 @@ Definition: Worker threads are secondary threads created to perform background o
 4. Without Worker Threads: In a simple desktop application, if the main thread is responsible for fetching data from a remote server, it might cause the UI to freeze until the data is retrieved. Users would be unable to interact with the application during this wait time.
 5. With Worker Threads: By creating a worker thread to handle the data retrieval, the main thread can continue to process user inputs and keep the UI responsive.
 6. Once the data is fetched, the worker thread can notify the main thread to update the UI with the new data.
+
+# Dispatcher
+
+```
+  Application.Current.Dispatcher.Invoke(() =>  
+            {  
+                ProgressBar.Value = i; // Update UI element  
+            });
+```
+1. Dispatcher is a vital component used for managing the execution of code on the UI thread
+2. A Dispatcher is an object that provides a mechanism for executing code on the thread that the Dispatcher is associated with.
+3. Typically, this is the main UI thread of an application. It is designed to facilitate communication between different threads, particularly when you need to update the UI from a background thread.
+4. This is crucial in UI applications where only the UI thread can safely modify UI elements.
+5. The Dispatcher can queue methods to be executed on its thread.
+6.  Dispatcher allows developers to specify a priority for the operations. This can dictate the order in which the actions will be executed.  
