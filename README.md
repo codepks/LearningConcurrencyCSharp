@@ -23,3 +23,33 @@ It wraps around a call to make it syncronous if it is not syncronous.
 1. Until the `await` completes it suspends the function it is called in
 2. When the current function is suspended,the control is returned to the called function
 3. For e.g. the click event returns the control to the UI so that UI can continue its work
+
+
+# Main Thread and Worker Thread
+
+## Main Thread
+Definition: The main thread is the primary thread of execution in a program. It is created by the operating system when the program starts running and is responsible for executing the main entry point of the application.
+
+### Role:
+
+1. In most applications (especially GUI applications), the main thread is responsible for initializing the application, creating the user interface, and handling user interactions.
+2. It often runs in a single-threaded environment where all parts of the application must respond to events in a specific order.
+3. Blocking: If the main thread is blocked (e.g., waiting for a long network operation to complete), the entire application can become unresponsive to user input.
+4. This is why it's crucial to keep the main thread responsive, especially in GUI applications.
+
+## Worker Thread
+Definition: Worker threads are secondary threads created to perform background operations. They run independently of the main thread and can handle time-consuming tasks without blocking the main thread.
+
+### Role:
+
+1. Worker threads are useful for performing tasks such as data processing, file I/O, network requests, or any other operations that are expected to take a significant amount of time.
+2. By offloading these tasks to worker threads, applications can remain responsive, allowing the main thread to continue processing user inputs and updating the UI.
+
+## Creation:
+
+1. Worker threads can be created in various ways, including using thread pools, tasks, or explicit thread management using languages and frameworks that support multi-threading.
+2. Examples include using Thread, Task, or BackgroundWorker in .NET, as well as new Thread() in Java.
+3. Example Scenario
+4. Without Worker Threads: In a simple desktop application, if the main thread is responsible for fetching data from a remote server, it might cause the UI to freeze until the data is retrieved. Users would be unable to interact with the application during this wait time.
+5. With Worker Threads: By creating a worker thread to handle the data retrieval, the main thread can continue to process user inputs and keep the UI responsive.
+6. Once the data is fetched, the worker thread can notify the main thread to update the UI with the new data.
